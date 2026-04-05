@@ -10,6 +10,9 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
+    outputs:
+      released: ${{ steps.semver.outputs.released }}
+      new_version: ${{ steps.semver.outputs.new_version }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -85,3 +88,32 @@ jobs:
           gh release create "$VERSION" \
             --title "$VERSION" \
             --notes-file /tmp/changelog.md
+
+  publish:
+    needs: release
+    if: needs.release.outputs.released == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install build tools
+        run: pip install build twine
+
+      - name: Build all packages
+        run: |
+          for pkg in kubernetes github http database notifications; do
+            echo "Building fastmcp-tools-${pkg}..."
+            python -m build --outdir dist/ "tools/${pkg}/"
+          done
+
+      - name: Publish to PyPI
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        run: python -m twine upload dist/*
