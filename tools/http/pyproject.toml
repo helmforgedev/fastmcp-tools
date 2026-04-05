@@ -11,11 +11,12 @@ requires-python = ">=3.11"
 dependencies = ["requests>=2.31"]
 
 [project.entry-points."fastmcp_tools"]
-http = "tools.http"
+http = "fastmcp_tools_http"
 
 [tool.setuptools.packages.find]
-where = ["../.."]
-include = ["tools.http*"]
+where = ["src"]
+include = ["fastmcp_tools_http*"]
+
 
 [tool.setuptools.package-data]
-"tools.http" = ["*.py"]
+"fastmcp_tools_http" = ["*.py"]
