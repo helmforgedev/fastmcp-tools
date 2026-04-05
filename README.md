@@ -16,6 +16,27 @@ Each tool is a standalone Python file ready to deploy via inline ConfigMap, S3, 
 
 ## Usage
 
+### Pip Packages (auto-detected)
+
+Install tool packages via `EXTRA_PIP_PACKAGES` — fastmcp-server automatically discovers and registers them:
+
+```yaml
+# values.yaml
+extraPipPackages:
+  - fastmcp-tools-kubernetes
+  - fastmcp-tools-github
+```
+
+Available packages:
+
+| Package | Pip name |
+|---------|----------|
+| Kubernetes | `fastmcp-tools-kubernetes` |
+| GitHub | `fastmcp-tools-github` |
+| HTTP | `fastmcp-tools-http` |
+| Database | `fastmcp-tools-database` (extras: `[postgres]`, `[mysql]`, `[all]`) |
+| Notifications | `fastmcp-tools-notifications` |
+
 ### Git Source
 
 ```yaml
