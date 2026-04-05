@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fastmcp-tools-database"
+version = "0.1.0"
+description = "Database tools for fastmcp-server"
+license = "MIT"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+postgres = ["psycopg2-binary>=2.9"]
+mysql = ["pymysql>=1.1"]
+all = ["psycopg2-binary>=2.9", "pymysql>=1.1"]
+
+[project.entry-points."fastmcp_tools"]
+database = "tools.database"
+
+[tool.setuptools.packages.find]
+where = ["../.."]
+include = ["tools.database*"]
+
+[tool.setuptools.package-data]
+"tools.database" = ["*.py"]

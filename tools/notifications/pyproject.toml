@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fastmcp-tools-notifications"
+version = "0.1.0"
+description = "Notification tools for fastmcp-server"
+license = "MIT"
+requires-python = ">=3.11"
+dependencies = ["requests>=2.31"]
+
+[project.entry-points."fastmcp_tools"]
+notifications = "tools.notifications"
+
+[tool.setuptools.packages.find]
+where = ["../.."]
+include = ["tools.notifications*"]
+
+[tool.setuptools.package-data]
+"tools.notifications" = ["*.py"]
