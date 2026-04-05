@@ -105,6 +105,13 @@ jobs:
       - name: Install build tools
         run: pip install build twine
 
+      - name: Update package versions
+        run: |
+          VERSION="${{ needs.release.outputs.new_version }}"
+          for pkg in kubernetes github http database notifications; do
+            sed -i "s/^version = .*/version = \"${VERSION}\"/" "tools/${pkg}/pyproject.toml"
+          done
+
       - name: Build all packages
         run: |
           for pkg in kubernetes github http database notifications; do
@@ -116,4 +123,4 @@ jobs:
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
-        run: python -m twine upload dist/*
+        run: python -m twine upload --skip-existing dist/*
