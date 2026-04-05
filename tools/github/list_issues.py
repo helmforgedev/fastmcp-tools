@@ -40,7 +40,7 @@ def list_issues(
     issues = resp.json()
     lines = [f"Issues for {owner}/{repo} ({state}):"]
     for issue in issues[:limit]:
-        labels_str = ", ".join(l["name"] for l in issue.get("labels", []))
+        labels_str = ", ".join(lbl["name"] for lbl in issue.get("labels", []))
         lines.append(f"  #{issue['number']} {issue['title']} [{labels_str}]")
 
     if len(lines) == 1:

@@ -26,9 +26,7 @@ def get_pods(namespace: str = "default", label_selector: str = "") -> str:
     lines = [f"Pods in namespace '{namespace}':"]
     for pod in pods.items:
         status = pod.status.phase
-        restarts = sum(
-            cs.restart_count for cs in (pod.status.container_statuses or [])
-        )
+        restarts = sum(cs.restart_count for cs in (pod.status.container_statuses or []))
         lines.append(f"  {pod.metadata.name}  {status}  restarts={restarts}")
 
     if len(lines) == 1:
