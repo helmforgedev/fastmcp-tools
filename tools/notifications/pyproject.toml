@@ -11,11 +11,12 @@ requires-python = ">=3.11"
 dependencies = ["requests>=2.31"]
 
 [project.entry-points."fastmcp_tools"]
-notifications = "tools.notifications"
+notifications = "fastmcp_tools_notifications"
 
 [tool.setuptools.packages.find]
-where = ["../.."]
-include = ["tools.notifications*"]
+where = ["src"]
+include = ["fastmcp_tools_notifications*"]
+
 
 [tool.setuptools.package-data]
-"tools.notifications" = ["*.py"]
+"fastmcp_tools_notifications" = ["*.py"]

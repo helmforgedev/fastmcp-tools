@@ -11,11 +11,11 @@ requires-python = ">=3.11"
 dependencies = ["kubernetes>=28.0"]
 
 [project.entry-points."fastmcp_tools"]
-kubernetes = "tools.kubernetes"
+kubernetes = "fastmcp_tools_kubernetes"
 
 [tool.setuptools.packages.find]
-where = ["../.."]
-include = ["tools.kubernetes*"]
+where = ["src"]
+include = ["fastmcp_tools_kubernetes*"]
 
 [tool.setuptools.package-data]
-"tools.kubernetes" = ["*.py"]
+"fastmcp_tools_kubernetes" = ["*.py"]

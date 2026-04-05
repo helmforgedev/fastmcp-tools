@@ -11,11 +11,12 @@ requires-python = ">=3.11"
 dependencies = ["requests>=2.31"]
 
 [project.entry-points."fastmcp_tools"]
-github = "tools.github"
+github = "fastmcp_tools_github"
 
 [tool.setuptools.packages.find]
-where = ["../.."]
-include = ["tools.github*"]
+where = ["src"]
+include = ["fastmcp_tools_github*"]
+
 
 [tool.setuptools.package-data]
-"tools.github" = ["*.py"]
+"fastmcp_tools_github" = ["*.py"]
