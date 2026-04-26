@@ -29,11 +29,7 @@ def github_list_issues(
     if result["status"] != "PASS":
         return result
 
-    issues = [
-        issue
-        for issue in result["data"]
-        if "pull_request" not in issue
-    ][:limit]
+    issues = [issue for issue in result["data"] if "pull_request" not in issue][:limit]
     return {
         "status": "PASS",
         "issues": [

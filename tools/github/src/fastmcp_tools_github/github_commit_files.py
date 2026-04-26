@@ -34,7 +34,11 @@ def github_commit_files(
     if reason_error:
         return reason_error
     if not files:
-        return {"status": "ERROR", "error_code": "files_required", "message": "files is empty."}
+        return {
+            "status": "ERROR",
+            "error_code": "files_required",
+            "message": "files is empty.",
+        }
 
     payload = {
         "branch": branch,
@@ -50,7 +54,11 @@ def github_commit_files(
         path = item.get("path", "")
         content = item.get("content", "")
         if not path:
-            return {"status": "ERROR", "error_code": "path_required", "message": "Every file needs path."}
+            return {
+                "status": "ERROR",
+                "error_code": "path_required",
+                "message": "Every file needs path.",
+            }
 
         existing = github_request(
             "GET",

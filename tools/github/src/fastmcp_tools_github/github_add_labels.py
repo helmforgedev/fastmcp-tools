@@ -1,6 +1,10 @@
 """Add labels to a GitHub issue or pull request."""
 
-from fastmcp_tools_github.github_api import dry_run_result, github_request, require_reason
+from fastmcp_tools_github.github_api import (
+    dry_run_result,
+    github_request,
+    require_reason,
+)
 
 __tags__ = ["github", "write"]
 __timeout__ = 30.0
@@ -30,7 +34,11 @@ def github_add_labels(
     if dry_run:
         return dry_run_result("github_add_labels", payload)
     if not clean_labels:
-        return {"status": "ERROR", "error_code": "labels_required", "message": "labels is empty."}
+        return {
+            "status": "ERROR",
+            "error_code": "labels_required",
+            "message": "labels is empty.",
+        }
 
     result = github_request(
         "POST",

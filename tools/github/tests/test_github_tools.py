@@ -13,7 +13,9 @@ from fastmcp_tools_github import run_gh
 from fastmcp_tools_github.github_create_branch import github_create_branch
 from fastmcp_tools_github.github_get_file import github_get_file
 from fastmcp_tools_github.github_get_repo import github_get_repo
-from fastmcp_tools_github.github_get_workflow_run_logs import github_get_workflow_run_logs
+from fastmcp_tools_github.github_get_workflow_run_logs import (
+    github_get_workflow_run_logs,
+)
 from fastmcp_tools_github.github_list_issues import github_list_issues
 from fastmcp_tools_github.github_open_pull_request import github_open_pull_request
 
@@ -148,7 +150,9 @@ class GitHubToolTests(unittest.TestCase):
 
     @mock.patch.dict(os.environ, {"GITHUB_TOKEN": "token"}, clear=False)
     @mock.patch("fastmcp_tools_github.github_api.requests.request")
-    def test_workflow_logs_return_redirect_location_without_following(self, request_mock):
+    def test_workflow_logs_return_redirect_location_without_following(
+        self, request_mock
+    ):
         request_mock.return_value = FakeResponse(
             status_code=302,
             data=None,
