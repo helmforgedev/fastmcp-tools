@@ -5,6 +5,13 @@ Requires: requests
 
 __tags__ = ["github", "write"]
 __timeout__ = 30.0
+__required_scopes__ = ["github:pr"]
+__mcp_auto_register__ = False
+__annotations_mcp__ = {
+    "openWorldHint": True,
+    "destructiveHint": False,
+    "title": "Create GitHub Pull Request",
+}
 
 
 def create_pr(
@@ -15,7 +22,7 @@ def create_pr(
     base: str = "main",
     body: str = "",
 ) -> str:
-    """Create a pull request on a GitHub repository."""
+    """Legacy wrapper; use github_open_pull_request for MCP registration."""
     import os
 
     import requests

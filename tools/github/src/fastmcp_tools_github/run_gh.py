@@ -4,8 +4,14 @@ Requires: gh CLI installed and authenticated.
 No external Python dependencies — uses subprocess.
 """
 
-__tags__ = ["github", "cli"]
+__tags__ = ["github", "cli", "admin"]
 __timeout__ = 60.0
+__required_scopes__ = ["github:admin"]
+__annotations_mcp__ = {
+    "destructiveHint": True,
+    "openWorldHint": True,
+    "title": "Run GitHub CLI",
+}
 
 
 def run_gh(

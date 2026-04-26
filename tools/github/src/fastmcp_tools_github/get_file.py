@@ -6,6 +6,13 @@ Requires: requests
 __tags__ = ["github", "read"]
 __timeout__ = 30.0
 __cache_ttl__ = 120
+__required_scopes__ = ["github:read"]
+__mcp_auto_register__ = False
+__annotations_mcp__ = {
+    "readOnlyHint": True,
+    "openWorldHint": True,
+    "title": "Get GitHub File",
+}
 
 
 def get_file(
@@ -14,7 +21,7 @@ def get_file(
     path: str,
     ref: str = "main",
 ) -> str:
-    """Get file contents from a GitHub repository."""
+    """Legacy wrapper; use github_get_file for MCP registration."""
     import base64
     import os
 
