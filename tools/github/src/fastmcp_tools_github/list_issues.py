@@ -6,6 +6,13 @@ Requires: requests
 __tags__ = ["github", "read"]
 __timeout__ = 30.0
 __cache_ttl__ = 60
+__required_scopes__ = ["github:read"]
+__mcp_auto_register__ = False
+__annotations_mcp__ = {
+    "readOnlyHint": True,
+    "openWorldHint": True,
+    "title": "List GitHub Issues",
+}
 
 
 def list_issues(
@@ -15,7 +22,7 @@ def list_issues(
     labels: str = "",
     limit: int = 20,
 ) -> str:
-    """List issues from a GitHub repository."""
+    """Legacy wrapper; use github_list_issues for MCP registration."""
     import os
 
     import requests
