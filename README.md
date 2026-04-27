@@ -220,4 +220,4 @@ All tools use fastmcp-server magic variables:
 
 ## License
 
-MIT
+Apache-2.0
