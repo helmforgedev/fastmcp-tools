@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "fastmcp-tools-github"
 version = "0.2.0"
 description = "GitHub tools for fastmcp-server"
-license = "MIT"
+license = "Apache-2.0"
 requires-python = ">=3.11"
 dependencies = ["requests>=2.31"]
 
